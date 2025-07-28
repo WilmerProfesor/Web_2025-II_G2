@@ -1,3 +1,31 @@
-h1{
-    color: red;
+#caja1{
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+#caja2{
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+#caja3{
+    background-color: green;
+    height: 100px;
+    width: 100px;
+}
+#caja4{
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+}
+
+a {
+    padding: 20px; /* solo permite modificar horizontalmente por que es inline */
+    width: 100px; /* no se aplica a elementos inline */    
+}
+
+.bordeGrueso {
+    border: 15px solid black;
 }
