@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#padre{
+    width: 100vw;
+    height: 100vh;
+    background-color: yellow;
+    display: flex;    
+    
+    justify-content: space-evenly; /* alinea los hijos en el centro - eje principal*/
+    align-items: center; /* alinea los hijos en el centro - eje secundario*/
+    gap: 20px;  /* Distancia entre los hijos */
+    flex-wrap: wrap; /* permite que los hijos se ajusten a la pantalla */
+    align-content: center; /* alinea los hijos en el centro si hay espacio extra */
+}
+
+.hijo{
+    width: 400px;
+    height: 400px;
+    background-color: red;  
+    border-radius: 15px;  
+}
