@@ -1,0 +1,26 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+h1{
+    color:red; 
+    font-size:80px;
+    border: solid 10px black;
+    padding: 50px;
+    
+}
+
+p{
+    color:rgba(15, 15, 27, 0.582) !important;  
+}
+
+.clase1{
+    color:rgba(124, 171, 49, 0.836);
+    font-size:20px;
+}
+
+#unico{
+    color: gray;
+}
