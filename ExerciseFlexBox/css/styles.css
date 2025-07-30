@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#padre{
+    background-color: rgb(34, 0, 255);
+    width: 80vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#contenedor-cuadros{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.cuadro{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+#contenedor-circulos{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.circulo{
+    border-radius: 50%;
+    width: 20%;
+    aspect-ratio: 1/1;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuadrito{
+    width: 25%;
+    height: 25%;
+    background-color: red;
+}
