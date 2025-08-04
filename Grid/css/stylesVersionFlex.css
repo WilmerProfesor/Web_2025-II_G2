@@ -1,0 +1,57 @@
+#container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    width: 100%;
+    height: 25%;
+    background-color: blue;
+}
+
+#container2{
+    width: 100%;
+    height: 75%;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+#container3{
+    width: 80%;
+    height: 100%;
+    
+}
+
+aside{
+    width: 20%;
+    height: 100%;
+    background-color: green;
+}
+
+main{
+    width: 100%;
+    height: 66%;
+    background-color: lightgray;
+    display: flex;
+}
+footer{
+    width: 100%;
+    height: 34%;
+    background-color: yellow;
+}
+
+section{
+    width: 50%;
+    height: 100%;
+    background-color: orange;
+}
+
+article{
+    width: 50%;
+    height: 100%;
+    /* background-color: lightgray; */
+    background-color: red;
+}
