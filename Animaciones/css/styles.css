@@ -1,0 +1,34 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#boxRef{
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 3rem; 
+    margin: 10px;   
+}
+#box{
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 3rem;    
+    /* background-image: linear-gradient(to bottom, yellow 50%, blue, red); */
+    /* background-image: radial-gradient( yellow 50%, blue, red); */
+    /* transform: translate(400px, 400px); */
+    /* transform: rotateY(45deg); */
+    /* animation: mover 2s infinite alternate; */
+    transition: 2s;
+    &:hover{
+        transform: scale(1.1);
+        box-shadow: 10px 10px 5px rgba(0,0,0,0.2);
+        background-color: blue;
+    }
+}
