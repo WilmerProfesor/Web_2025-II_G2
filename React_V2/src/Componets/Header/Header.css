@@ -1,0 +1,14 @@
+header{
+    height: 150px;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+#apple-icon{
+    font-size: 3rem;
+    color: #61dafb;
+}
