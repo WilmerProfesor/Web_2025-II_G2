@@ -19,3 +19,10 @@ main{
     }
     
 }
+#tmpContainerButton{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}

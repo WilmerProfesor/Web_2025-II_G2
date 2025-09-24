@@ -8,23 +8,25 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import IguanaLocal from "../../assets/iguanaLocal.jpeg"
 
-export default function CardSection() {
+// export default function CardSection( {title, content} ) {
+export default function CardSection( {data} ) {
+  console.log(data);
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           // height="140"
-          image= {IguanaLocal}
+          image= {data.image?data.image:IguanaLocal}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {data.name?data.name:"Lizard"}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {data.species?data.species:"Especie desconocida"}
           </Typography>
         </CardContent>
       </CardActionArea>
