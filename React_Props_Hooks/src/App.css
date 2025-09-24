@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main{
+    display: flex;    
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 50px;
+    section{
+        width: 50%;
+        padding: 30px;
+    }
+    #card-section{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+}
