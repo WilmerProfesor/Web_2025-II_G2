@@ -10,7 +10,7 @@ import IguanaLocal from "../../assets/iguanaLocal.jpeg"
 
 // export default function CardSection( {title, content} ) {
 export default function CardSection( {data} ) {
-  console.log(data);
+  // console.log(data);
   
   return (
     <Card sx={{ maxWidth: 345 }}>

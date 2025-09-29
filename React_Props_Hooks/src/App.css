@@ -6,7 +6,7 @@
 
 main{
     display: flex;    
-    align-items: center;
+    align-items: start;
     justify-content: space-evenly;
     padding: 50px;
     section{
@@ -15,6 +15,7 @@ main{
     }
     #card-section{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
     }
     
