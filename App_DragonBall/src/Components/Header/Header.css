@@ -1,0 +1,12 @@
+#logoDBZ{    
+    height: 80px;
+}
+
+header{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
