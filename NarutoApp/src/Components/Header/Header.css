@@ -1,0 +1,14 @@
+header{
+    background-color: black;
+    color: white;    
+    padding: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logoPpal {
+    height: 100px;        
+}
