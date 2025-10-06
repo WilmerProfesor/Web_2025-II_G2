@@ -1,0 +1,17 @@
+header{
+    background-color: #FED420;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+#image-title{
+    height: 150px;
+    margin-left: 100px;
+    margin-right: 50px;
+}

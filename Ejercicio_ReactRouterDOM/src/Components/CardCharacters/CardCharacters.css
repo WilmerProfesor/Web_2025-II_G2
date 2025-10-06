@@ -1,0 +1,21 @@
+.card-character {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  max-width:  350px;
+  margin: 10px;
+  img{
+    height: 200px;
+    border-radius: 8px;
+    /* background-color: #ccc; */
+    object-fit: contain;
+    &:hover{
+      transform: scale(1.5);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
