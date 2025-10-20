@@ -16,6 +16,7 @@ function App() {
           <Route path='/episodios' element={<EpisodiesPage />} />
           <Route path='/personajes' element={<CharactersPage />} />
           <Route path='/localizacion' element={<LocationPage />} />
+          <Route path='/*' element={<LocationPage />} />
         </Routes>
       </div>
     </Router>
@@ -23,3 +24,4 @@ function App() {
 }
 
 export default App
+≈≈

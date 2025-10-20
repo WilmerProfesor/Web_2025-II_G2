@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simpsons App</title>
+  <style>
+    :root {
+      --simpson-yellow: #FFD90F;
+      --simpson-blue: #0096FF;
+      --simpson-white: #FFF9E6;
+      --simpson-dark: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--simpson-white);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      grid-template-rows: 70px 1fr;
+      grid-template-areas:
+        "header header"
+        "nav main";
+      height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background-color: var(--simpson-yellow);
+      color: var(--simpson-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-bottom: 4px solid var(--simpson-blue);
+      padding: 0 1rem;
+    }
+
+    #toggleNav {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--simpson-dark);
+      transition: transform 0.2s;
+    }
+
+    #toggleNav:hover {
+      transform: scale(1.1);
+    }
+
+    nav {
+      grid-area: nav;
+      background-color: var(--simpson-blue);
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      color: white;
+      overflow: hidden;
+      width: 220px;
+    }
+
+    nav.compacto {
+      width: 70px;
+      padding: 1rem 0.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      margin: 0.8rem 0;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: background-color 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: rgba(255, 217, 15, 0.9);
+      color: var(--simpson-dark);
+      transform: translateX(5px);
+    }
+
+    nav.compacto a span {
+      display: none;
+    }
+
+    main {
+      grid-area: main;
+      padding: 1.5rem;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .character {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .character img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--simpson-yellow);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      background: var(--simpson-blue);
+      color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .stat .number {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+
+    .bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 10px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 6px;
+      background: var(--simpson-yellow);
+      width: 0%;
+      border-radius: 10px;
+      animation: fillBar 2s forwards;
+    }
+
+    @keyframes fillBar {
+      from { width: 0%; }
+      to { width: var(--value); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span>Simpsons App</span>
+    <button id="toggleNav">☰</button>
+  </header>
+
+  <nav id="sidebar">
+    <a href="#" id="home" class="active">🏠 <span>Home</span></a>
+    <a href="#" id="personajes">👨 <span>Personajes</span></a>
+    <a href="#" id="episodios">🎬 <span>Episodios</span></a>
+    <a href="#" id="lugares">📍 <span>Lugares</span></a>
+  </nav>
+
+  <main id="content">
+    <div class="card">
+      <h2>Bienvenido a la App de los Simpsons</h2>
+      <p>Explora el mundo de Springfield 🍩 y conoce a sus personajes, episodios y lugares más emblemáticos.</p>
+    </div>
+
+    <section class="dashboard">
+      <div class="stat">
+        <h3>Personajes</h3>
+        <div class="number" id="stat-personajes">0</div>
+        <div class="bar"><div class="bar-fill" style="--value: 90%;"></div></div>
+      </div>
+      <div class="stat">
+        <h3>Episodios</h3>
+        <div class="number" id="stat-episodios">0</div>
+        <div class="bar"><div class="bar-fill" style="--value: 80%;"></div></div>
+      </div>
+      <div class="stat">
+        <h3>Lugares</h3>
+        <div class="number" id="stat-lugares">0</div>
+        <div class="bar"><div class="bar-fill" style="--value: 70%;"></div></div>
+      </div>
+      <div class="stat">
+        <h3>Citas memorables</h3>
+        <div class="number" id="stat-citas">0</div>
+        <div class="bar"><div class="bar-fill" style="--value: 60%;"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 - Fan App basada en la serie Los Simpsons
+  </footer>
+
+  <script>
+    // Toggle Sidebar Compacto/Expandido
+    const toggleButton = document.getElementById("toggleNav");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("compacto");
+    });
+
+    // Animar estadísticas del dashboard
+    document.addEventListener("DOMContentLoaded", () => {
+      const stats = [
+        { id: "stat-personajes", value: 42 },
+        { id: "stat-episodios", value: 695 },
+        { id: "stat-lugares", value: 25 },
+        { id: "stat-citas", value: 1000 }
+      ];
+      stats.forEach(stat => {
+        let count = 0;
+        const target = stat.value;
+        const el = document.getElementById(stat.id);
+        const interval = setInterval(() => {
+          count++;
+          el.textContent = count;
+          if (count >= target) clearInterval(interval);
+        }, 10);
+      });
+    });
+
+    // Navegación y carga dinámica de contenido
+    const navLinks = document.querySelectorAll("nav a");
+    const content = document.getElementById("content");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", async (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        const id = link.id;
+        content.innerHTML = "";
+
+        if (id === "home") {
+          content.innerHTML = `
+            <div class="card">
+              <h2>Bienvenido a la App de los Simpsons</h2>
+              <p>Explora el mundo de Springfield 🍩 y conoce a sus personajes, episodios y lugares más emblemáticos.</p>
+            </div>
+            <section class="dashboard">
+              <div class="stat">
+                <h3>Personajes</h3>
+                <div class="number" id="stat-personajes">0</div>
+                <div class="bar"><div class="bar-fill" style="--value: 90%;"></div></div>
+              </div>
+              <div class="stat">
+                <h3>Episodios</h3>
+                <div class="number" id="stat-episodios">0</div>
+                <div class="bar"><div class="bar-fill" style="--value: 80%;"></div></div>
+              </div>
+              <div class="stat">
+                <h3>Lugares</h3>
+                <div class="number" id="stat-lugares">0</div>
+                <div class="bar"><div class="bar-fill" style="--value: 70%;"></div></div>
+              </div>
+              <div class="stat">
+                <h3>Citas memorables</h3>
+                <div class="number" id="stat-citas">0</div>
+                <div class="bar"><div class="bar-fill" style="--value: 60%;"></div></div>
+              </div>
+            </section>
+          `;
+        }
+
+        if (id === "personajes") {
+          content.innerHTML = `<h2>Personajes de Los Simpsons</h2>`;
+          try {
+            const res = await fetch("https://thesimpsonsquoteapi.glitch.me/quotes?count=10");
+            const data = await res.json();
+            data.forEach(item => {
+              const card = document.createElement("div");
+              card.className = "card character";
+              card.innerHTML = `
+                <img src="${item.image}" alt="${item.character}">
+                <div>
+                  <h3>${item.character}</h3>
+                  <p>"${item.quote}"</p>
+                </div>
+              `;
+              content.appendChild(card);
+            });
+          } catch (error) {
+            content.innerHTML += `<p>Error al cargar personajes 😢</p>`;
+          }
+        }
+
+        if (id === "episodios") {
+          content.innerHTML = `
+            <div class="card">
+              <h2>Episodios</h2>
+              <p>En futuras versiones se conectará con una API específica de episodios de Los Simpsons.</p>
+            </div>
+          `;
+        }
+
+        if (id === "lugares") {
+          content.innerHTML = `
+            <div class="card">
+              <h2>Lugares icónicos de Springfield</h2>
+              <ul>
+                <li>🍩 La Taberna de Moe</li>
+                <li>🍔 Krusty Burger</li>
+                <li>🏠 Casa de los Simpson</li>
+                <li>🏫 Escuela Primaria de Springfield</li>
+                <li>🏭 Planta Nuclear</li>
+              </ul>
+            </div>
+          `;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
